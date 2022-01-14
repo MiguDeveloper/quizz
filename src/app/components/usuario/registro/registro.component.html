@@ -1,0 +1,92 @@
+<div class="container mt-5">
+  <div *ngIf="loading" class="row">
+    <app-spinner></app-spinner>
+  </div>
+  <div *ngIf="!loading" class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="text-center">Registrar Usuario</h3>
+          <form [formGroup]="registroForm">
+            <div class="mb-3">
+              <input
+                formControlName="usuario"
+                type="text"
+                class="form-control form-control-lg"
+                placeholder="Correo"
+              />
+              <span
+                *ngIf="
+                  registroForm.controls['usuario'].hasError('required') &&
+                  registroForm.controls['usuario']?.touched
+                "
+                class="text-danger"
+                >El usuario es requerido</span
+              >
+              <span
+                *ngIf="registroForm.controls['usuario'].hasError('email')"
+                class="text-danger"
+                >formato correo no valido</span
+              >
+            </div>
+            <div class="mb-3">
+              <input
+                formControlName="password"
+                type="password"
+                class="form-control form-control-lg"
+                placeholder="Contraseña"
+              />
+              <span
+                *ngIf="
+                  registroForm.controls['password'].hasError('required') &&
+                  registroForm.controls['password']?.touched
+                "
+                class="text-danger"
+                >La contraseña es requerido</span
+              >
+              <span
+                *ngIf="
+                  registroForm.controls['password'].hasError('minlength') &&
+                  registroForm.controls['password']?.touched
+                "
+                class="text-danger"
+                >La contraseña debe de tener minimo 6 caracteres</span
+              >
+            </div>
+            <div class="mb-3">
+              <input
+                formControlName="repeatPassword"
+                type="password"
+                class="form-control form-control-lg"
+                placeholder="Contraseña"
+              />
+              <span
+                *ngIf="
+                  registroForm.hasError('notSame') &&
+                  registroForm.controls['repeatPassword']?.touched
+                "
+                class="text-danger"
+                >La contraseña deben ser iguales</span
+              >
+            </div>
+            <button
+              [routerLink]="['/usuario']"
+              type="button"
+              class="btn btn-secondary btn-lg"
+            >
+              Volver
+            </button>
+            <button
+              (click)="registrar()"
+              [disabled]="registroForm.invalid"
+              type="button"
+              class="btn btn-primary btn-lg float-end"
+            >
+              Aceptar
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

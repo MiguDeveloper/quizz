@@ -1,0 +1,76 @@
+<div class="container mt-5">
+  <div *ngIf="loading" class="row">
+    <app-spinner></app-spinner>
+  </div>
+  <div *ngIf="!loading" class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="text-center titulo">Login</h2>
+          <form [formGroup]="loginForm">
+            <div class="mb-3">
+              <input
+                formControlName="usuario"
+                type="text"
+                class="form-control form-control-lg"
+                placeholder="Correo"
+              />
+              <span
+                *ngIf="
+                  loginForm.controls['usuario'].hasError('required') &&
+                  loginForm.controls['usuario']?.touched
+                "
+                class="text-danger"
+                >El correo es requerido</span
+              >
+              <span
+                *ngIf="loginForm.controls['usuario'].hasError('email')"
+                class="text-danger"
+                >formato correo no valido</span
+              >
+            </div>
+            <div class="mb-3">
+              <input
+                formControlName="password"
+                type="password"
+                class="form-control form-control-lg"
+                placeholder="Contraseña"
+              />
+              <span
+                *ngIf="
+                  loginForm.controls['password'].hasError('required') &&
+                  loginForm.controls['password']?.touched
+                "
+                class="text-danger"
+                >El password es requerido</span
+              >
+            </div>
+            <button
+              type="button"
+              [routerLink]="['/']"
+              class="btn btn-secondary btn-lg"
+            >
+              Volver
+            </button>
+            <button
+              (click)="login()"
+              [disabled]="loginForm.invalid"
+              type="button"
+              class="btn btn-primary btn-lg float-end"
+            >
+              Aceptar
+            </button>
+          </form>
+          <br />
+          <div class="text-center">
+            <a [routerLink]="['register']" routerLinkActive="router-link-active"
+              >Registrarse</a
+            >
+            <br />
+            <a [routerLink]="['recuperarPassword']">Recuperar password</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

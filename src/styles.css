@@ -24,3 +24,20 @@ body {
 .titulo {
   font-family: "Montserrat", sans-serif;
 }
+
+.card-titulo {
+  padding: 0 22px;
+}
+
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.classCorrecta {
+  background-color: #131d2d !important;
+  color: white !important;
+}

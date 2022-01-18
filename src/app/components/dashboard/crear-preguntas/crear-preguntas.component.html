@@ -1,0 +1,147 @@
+<div *ngIf="mostrarError" class="alert alert-danger text-center" role="alert">
+  POR FAVOR INGRESE TODOS LOS CAMPOS
+</div>
+
+<div class="container">
+  <div class="row mt-3 mb-5">
+    <div class="col-lg-8 offset-lg-2">
+      <form [formGroup]="addPreguntasForm">
+        <input
+          formControlName="titulo"
+          type="text"
+          class="form form-control form-control-lg inputPregunta"
+          placeholder="INGRESE PREGUNTA"
+          maxlength="150"
+        />
+        <div class="row mt-5">
+          <div class="col-lg-6 text-center">
+            <div class="fondo-item">
+              <p class="tituloSegundosPuntos">SEGUNDOS</p>
+              <p class="segPuntos">
+                <label>{{ seg }}</label>
+              </p>
+              <div>
+                <i
+                  (click)="sumarRestarSeg(-1)"
+                  class="fa fa-minus sumaResta"
+                ></i>
+                <i
+                  (click)="sumarRestarSeg(+1)"
+                  class="fa fa-plus sumaResta"
+                ></i>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 text-center">
+            <div class="fondo-item">
+              <p class="tituloSegundosPuntos">PUNTOS</p>
+              <p class="segPuntos">{{ puntos }}</p>
+              <input
+                formControlName="puntos"
+                type="range"
+                class="form-range"
+                min="0"
+                max="2000"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col-6">
+            <div formGroupName="respuesta1" class="input-group">
+              <input
+                formControlName="titulo"
+                type="text"
+                class="form-control inputRespuesta"
+                placeholder="Agregar respuesta 1"
+              />
+              <div class="input-group-text">
+                <i
+                  (click)="esCorrecta('1')"
+                  [ngClass]="{
+                    'far fa-circle': !obtenerEstadoRespuesta('1'),
+                    'fas fa-check-circle animate__animated animate__heartBeat':
+                      obtenerEstadoRespuesta('1')
+                  }"
+                ></i>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div formGroupName="respuesta2" class="input-group">
+              <input
+                formControlName="titulo"
+                type="text"
+                class="form-control inputRespuesta"
+                placeholder="Agregar respuesta 2"
+              />
+              <div class="input-group-text">
+                <i
+                  (click)="esCorrecta('2')"
+                  [ngClass]="{
+                    'far fa-circle': !obtenerEstadoRespuesta('2'),
+                    'fas fa-check-circle animate__animated animate__heartBeat':
+                      obtenerEstadoRespuesta('2')
+                  }"
+                  class="far fa-circle"
+                ></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-6">
+            <div formGroupName="respuesta3" class="input-group">
+              <input
+                formControlName="titulo"
+                type="text"
+                class="form-control inputRespuesta"
+                placeholder="Agregar respuesta 3 (opcional)"
+              />
+              <div class="input-group-text">
+                <i
+                  (click)="esCorrecta('3')"
+                  [ngClass]="{
+                    'far fa-circle': !obtenerEstadoRespuesta('3'),
+                    'fas fa-check-circle animate__animated animate__heartBeat':
+                      obtenerEstadoRespuesta('3')
+                  }"
+                  class="far fa-circle"
+                ></i>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div formGroupName="respuesta4" class="input-group">
+              <input
+                formControlName="titulo"
+                type="text"
+                class="form-control inputRespuesta"
+                placeholder="Agregar respuesta 4 (opcional)"
+              />
+              <div class="input-group-text">
+                <i
+                  (click)="esCorrecta('4')"
+                  [ngClass]="{
+                    'far fa-circle': !obtenerEstadoRespuesta('4'),
+                    'fas fa-check-circle animate__animated animate__heartBeat':
+                      obtenerEstadoRespuesta('4')
+                  }"
+                  class="far fa-circle"
+                ></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-12 text-center">
+            <button (click)="agregarPregunta()" class="btn-principal">
+              AGREGAR PREGUNTA
+            </button>
+          </div>
+        </div>
+      </form>
+      <app-list-preguntas></app-list-preguntas>
+    </div>
+  </div>
+</div>

@@ -4,6 +4,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { User } from '../../interfaces/user.model';
 
 @Component({
   selector: 'app-login',
@@ -44,8 +45,9 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/usuario/verificarcorreo']);
         } else {
           this.loading = false;
+          this.setLocalStorage(rpta.user);
           this.toastr.success('Acceso correcto', 'Login Success');
-          this.router.navigate(['/']);
+          this.router.navigate(['/dashboard']);
         }
       })
       .catch((err) => {
@@ -56,5 +58,13 @@ export class LoginComponent implements OnInit {
         );
         this.loginForm.reset();
       });
+  }
+
+  setLocalStorage({ uid, email }: any) {
+    const usuario: User = {
+      uid,
+      email,
+    };
+    localStorage.setItem('user', JSON.stringify(usuario));
   }
 }

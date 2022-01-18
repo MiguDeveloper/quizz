@@ -1,0 +1,9 @@
+.correcta {
+  background-color: #198754;
+  color: white !important;
+}
+
+.incorrecta {
+  background-color: #dc3545;
+  color: white;
+}

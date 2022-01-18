@@ -1,0 +1,20 @@
+.btn-quizz {
+  padding: 0 50px;
+}
+
+.bg-black {
+  background-color: rgb(51, 51, 51);
+}
+.fa {
+  cursor: pointer;
+  font-size: 25px;
+  margin: 0 2px 0;
+}
+
+.fa-chart-line {
+  color: darkcyan;
+}
+
+.fa-trash {
+  color: #a71c28;
+}

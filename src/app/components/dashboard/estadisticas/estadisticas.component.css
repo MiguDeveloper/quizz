@@ -1,0 +1,12 @@
+.fas {
+  cursor: pointer;
+  font-size: 25px;
+  margin: 0 2px;
+}
+.fas.fa-trash {
+  color: #a71c28;
+}
+
+.fas.fa-search {
+  color: darkcyan;
+}

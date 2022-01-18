@@ -1,0 +1,20 @@
+import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.css'],
+})
+export class NavbarComponent implements OnInit {
+  constructor(private fbAuth: AngularFireAuth, private router: Router) {}
+
+  ngOnInit(): void {}
+
+  logout() {
+    this.fbAuth.signOut();
+    localStorage.removeItem('user');
+    this.router.navigate(['/']);
+  }
+}

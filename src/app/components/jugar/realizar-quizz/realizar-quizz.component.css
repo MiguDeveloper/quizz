@@ -1,0 +1,19 @@
+.contadorPregunta {
+  font-size: 5rem;
+}
+.list-group-item {
+  font-size: 20px;
+  font-family: "Montserrat", sans-serif;
+  color: black;
+  cursor: pointer;
+}
+
+.rpta_seleccionada {
+  background-color: #131d2d;
+  color: white;
+}
+
+.btn-aceptar {
+  width: 100%;
+  font-size: 20px;
+}
